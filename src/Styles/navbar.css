@@ -1,0 +1,32 @@
+nav img {
+    height: 30px;
+    width: 30px;
+    border-radius: 30em;
+    font-size: 15px;
+    font-family: inherit;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 1px 1px 1px #151a6e, -1px -1px 1px #160101;
+}
+
+nav img::before {
+    content: '';
+    width: 0;
+    height: 6em;
+    border-radius: 30em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, cyan 0%, purple 100%);
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+  }
+
+  .navbar {
+    background-image: url(https://l450v.alamy.com/450v/2gj86b7/simple-music-logo-isolated-on-white-background-reverse-g-key-musical-notes-2gj86b7.jpg);
+    background-size: contain;
+  }
