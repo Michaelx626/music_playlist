@@ -7,13 +7,17 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    # favorites: [Song]
+    favorites: [Favorite]
   }
 
-  # type Song {
+  type Song {
+    _id: ID
+    artist: String
+    song: String
+  }
+
+  # type Favorite {
   #   _id: ID
-  #   name: String
-  #   artist: String
   # }
 
   type Auth {
@@ -27,13 +31,14 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    # getFavorites: [Song]
+    getAllFavorites: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    # addFavorite(name: String!, artist: String!): User
+    addFavorite(name: String!, artist: String!): User
+    deleteFavorite(songID: ID!): User
   }
 
 `;

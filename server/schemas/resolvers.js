@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Song } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 // const mongoose = require("mongoose");
 const { signToken } = require("../util/auth");
@@ -17,6 +17,14 @@ const resolvers = {
         console.error(err);
       }
     },
+
+    getAllFavorites: async () => {
+      try {
+        return await Song.find();
+      } catch (err) {
+        console.log(err);
+      }
+    }
   },  
 
   Mutation: {

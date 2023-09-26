@@ -1,16 +1,18 @@
-// const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-// const songSchema = new Schema(
-//   {
-//     name: {
-//       type: String,
-//       required: true,
-//     },
-//     artist: {
-//       type: String,
-//       required: true,
-//     }
-//   }
-// )
+const songSchema = new Schema(
+  {
+    artist: {
+      type: String,
+      required: true,
+    },
+    song: {
+      type: String,
+      required: true,
+    },
+  }
+);
 
-// module.exports = songSchema;
+const Song = model("Song", songSchema);
+
+module.exports = Song;
