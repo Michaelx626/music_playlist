@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const songSchema = require('./Song')
+// const songSchema = require('./Song')
 
 const userSchema = new Schema({
   username: {
@@ -28,7 +28,7 @@ const userSchema = new Schema({
     // match: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/, // enforce at least 8 characters with at least one capital letter and one number
   },
 
-  favorites: [songSchema]
+  // favorites: [songSchema]
 });
 
 userSchema.pre("save", async function (next) {
