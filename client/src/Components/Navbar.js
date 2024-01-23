@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
+// import "bootstrap/dist/js/bootstrap.bundle.min";
 import "../Styles/navbar.css";
 
 export const Navbar = function () {
@@ -15,7 +15,6 @@ export const Navbar = function () {
           <button
             className="btn btn-gold dropdown"
             href="#"
-            role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
