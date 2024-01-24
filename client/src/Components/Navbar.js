@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap/dist/js/bootstrap.bundle.min";
 import "../Styles/navbar.css";
@@ -22,9 +23,12 @@ export const Navbar = function () {
               alt=""
               src="https://cdn.vectorstock.com/i/preview-1x/15/40/blank-profile-picture-image-holder-with-a-crown-vector-42411540.webp"
             />
+            <Link to="/user"></Link>
           </button>
-
-          <button>Log In</button>
+          <button>
+                <Link to="/login" className="navbar-link">Log in</Link>
+                </button>
+      
         </div>
       </div>
     </nav>

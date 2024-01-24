@@ -3,12 +3,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./Components/scrollToTop";
 
 import { Home } from "./Pages/home.js";
-import { useParams } from "react-router";
+// import { useParams } from "react-router";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./Components/Navbar";
-import { Signup } from "./Pages/signup";
-import { Login } from "./Pages/login";
+import { Login } from "./Pages/login.js";
+import { UserProfile } from "./Pages/userprofile.js";
 
 //create your first component
 const Layout = () => {
@@ -23,8 +23,8 @@ const Layout = () => {
           <Navbar />
           <Routes>
           <Route element = {<Home />} path = "/" />
-            <Route element = {<Signup />} path = "/register" />
             <Route element = {<Login />} path = "/login" />
+            <Route element = {<UserProfile />} path = "/user" />
             <Route element = {<h1>Not found!</h1>} />
             
             
