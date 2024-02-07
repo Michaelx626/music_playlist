@@ -1,8 +1,9 @@
+import "../Styles/navbar.css";
 import React from "react";
 import { Link } from "react-router-dom"
+import Auth from "../util/auth";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap/dist/js/bootstrap.bundle.min";
-import "../Styles/navbar.css";
 
 export const Navbar = function () {
   return (
@@ -13,6 +14,7 @@ export const Navbar = function () {
           Music Playlist
         </span>
         <div className="dropdown">
+          {Auth.loggedIn() ? (
           <button
             className="btn btn-gold dropdown"
             href="#"
@@ -25,10 +27,11 @@ export const Navbar = function () {
             />
             <Link to="/user"></Link>
           </button>
+          ) : (
           <button>
-                <Link to="/login" className="navbar-link">Log in</Link>
-                </button>
-      
+            <Link to="/login" className="navbar-link">Log in</Link>
+          </button>
+          )}
         </div>
       </div>
     </nav>

@@ -1,12 +1,22 @@
 [
-  { "artist": "The Beatles", "song": "Hey Jude" },
-  { "artist": "Queen", "song": "Bohemian Rhapsody" },
-  { "artist": "Led Zeppelin", "song": "Stairway to Heaven" },
-  { "artist": "Pink Floyd", "song": "Comfortably Numb" },
-  { "artist": "The Rolling Stones", "song": "Paint It Black" },
-  { "artist": "David Bowie", "song": "Space Oddity" },
-  { "artist": "Michael Jackson", "song": "Billie Jean" },
-  { "artist": "Bob Dylan", "song": "Like a Rolling Stone" },
-  { "artist": "The Eagles", "song": "Hotel California" },
-  { "artist": "Nirvana", "song": "Smells Like Teen Spirit" }
+  {
+    "artist": "Artist1",
+    "song": "Song1"
+  },
+  {
+    "artist": "Artist2",
+    "song": "Song2"
+  },
+  {
+    "artist": "Artist3",
+    "song": "Song3"
+  },
+  {
+    "artist": "Artist4",
+    "song": "Song4"
+  },
+  {
+    "artist": "Artist5",
+    "song": "Song5"
+  }
 ]
