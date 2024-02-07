@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Playlist from '../Components/Playlist.js';
 import Songlist from '../Components/SongList.js';
 import UserInfo from '../Components/UserInfo.js';
@@ -10,6 +10,13 @@ export const Home = () =>{
   const songlistData = ["Playlist 1", "Playlist 2", "Playlist 3"];
   const userInfoData = "User: John Doe";
 
+  const [search, setSearch] = useState('')
+
+  const handleChange = (e) => {
+    const { value } = e.target
+    setSearch(value)
+  }
+
   return (
     <>
         <div className="App">
@@ -20,7 +27,7 @@ export const Home = () =>{
             </h1>
 
             <div className="d-flex justify-content-center">
-              <input type="text" placeholder="Search"></input>
+              <input type="text" placeholder="Search" value={search} onChange={handleChange}></input>
             </div>
 
             <div className="container d-flex justify-content-between">
