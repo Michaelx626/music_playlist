@@ -7,7 +7,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    favorites: [Favorite]
+    # favorites: [Favorite]
   }
 
   type Song {

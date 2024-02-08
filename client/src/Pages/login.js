@@ -1,16 +1,18 @@
-import React, { useState } from "react";
 import "../Styles/login.css";
+import React, { useState } from "react";
 import SignInForm from "../Components/SignIn";
 import SignUpForm from "../Components/SignUp";
 
 export function Login() {
   const [type, setType] = useState("signIn");
+
   const handleOnClick = text => {
     if (text !== type) {
       setType(text);
       return;
     }
   };
+
   const containerClass =
     "container " + (type === "signUp" ? "right-panel-active" : "");
   return (

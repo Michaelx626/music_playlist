@@ -1,34 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { LOGIN } from "../util/mutation";
+import Auth from "../util/auth";
+
 function SignInForm() {
-  const [state, setState] = React.useState({
+  const [formState, setFormState] = useState({
     email: "",
     password: ""
   });
-  const handleChange = evt => {
-    const value = evt.target.value;
-    setState({
-      ...state,
-      [evt.target.name]: value
+  const [errMessage, setErrMessage] = useState(null);
+  const [login, { error }] = useMutation(LOGIN);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormState({
+      ...formState,
+      [name]: value,
     });
   };
 
-  const handleOnSubmit = evt => {
-    evt.preventDefault();
-
-    const { email, password } = state;
-    alert(`You are login with email: ${email} and password: ${password}`);
-
-    for (const key in state) {
-      setState({
-        ...state,
-        [key]: ""
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await login({
+        variables: { email: formState.email, password: formState.password },
       });
+
+      const token = response.data.login?.token;
+
+      if (token) {
+        Auth.login(token);
+      }
+    } catch (err) {
+      setErrMessage(err.message);
     }
   };
 
   return (
     <div className="form-container sign-in-container">
-      <form onSubmit={handleOnSubmit}>
+      <form onSubmit={handleFormSubmit}>
         <h1>Sign in</h1>
         <div className="social-container">
           <a href="#" className="social">
@@ -46,14 +56,14 @@ function SignInForm() {
           type="email"
           placeholder="Email"
           name="email"
-          value={state.email}
+          value={formState.email}
           onChange={handleChange}
         />
         <input
           type="password"
           name="password"
           placeholder="Password"
-          value={state.password}
+          value={formState.password}
           onChange={handleChange}
         />
         <a href="#">Forgot your password?</a>

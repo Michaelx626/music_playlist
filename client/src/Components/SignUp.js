@@ -1,37 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../util/mutation";
+import Auth from "../util/auth";
+
 function SignUpForm() {
-  const [state, setState] = React.useState({
+  const [formState, setFormState] = useState({
     name: "",
     email: "",
     password: ""
   });
+
+  const [addUser, { error }] = useMutation(ADD_USER);
+
   const handleChange = evt => {
     const value = evt.target.value;
-    setState({
-      ...state,
+    setFormState({
+      ...formState,
       [evt.target.name]: value
     });
   };
 
-  const handleOnSubmit = evt => {
-    evt.preventDefault();
-
-    const { name, email, password } = state;
-    alert(
-      `You are sign up with name: ${name} email: ${email} and password: ${password}`
-    );
-
-    for (const key in state) {
-      setState({
-        ...state,
-        [key]: ""
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await addUser({
+        variables: {
+          username: formState.name,
+          email: formState.email,
+          password: formState.password,
+        },
       });
+
+      const token = response.data.addUser.token;
+      Auth.login(token);
+    } catch (err) {
+      console.error(err);
     }
   };
 
   return (
     <div className="form-container sign-up-container">
-      <form onSubmit={handleOnSubmit}>
+      <form onSubmit={handleFormSubmit}>
         <h1>Create Account</h1>
         <div className="social-container">
           <a href="#" className="social">
@@ -48,21 +57,21 @@ function SignUpForm() {
         <input
           type="text"
           name="name"
-          value={state.name}
+          value={formState.name}
           onChange={handleChange}
           placeholder="Name"
         />
         <input
           type="email"
           name="email"
-          value={state.email}
+          value={formState.email}
           onChange={handleChange}
           placeholder="Email"
         />
         <input
           type="password"
           name="password"
-          value={state.password}
+          value={formState.password}
           onChange={handleChange}
           placeholder="Password"
         />
